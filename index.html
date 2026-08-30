@@ -81,6 +81,17 @@
     font-size: 0.875rem;
     color: var(--muted);
   }
+  .private-note {
+    margin: 0.6rem 0 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .private-note a { color: var(--muted); }
+  /* Dezente Markierung, damit auf einen Blick klar ist, welche Karten ein
+     anonymer Besucher gar nicht erst ausgeliefert bekommt. */
+  a.card.private {
+    border-style: dashed;
+  }
   footer {
     margin-top: 3rem;
     font-size: 0.8rem;
@@ -101,6 +112,9 @@
   <header>
     <h1>Felix Herrmann</h1>
     <p>A few things I run</p>
+    <!--# if expr="$fh_private = 1" -->
+    <p class="private-note">Privater Modus aktiv · <a href="/logout">abschalten</a></p>
+    <!--# endif -->
   </header>
 
   <main class="links">
@@ -116,14 +130,6 @@
       <div class="name">Status</div>
       <div class="desc">Service status board</div>
     </a>
-    <a class="card" href="https://firefly.fherrmann.com">
-      <div class="name">Firefly</div>
-      <div class="desc">Personal finance manager</div>
-    </a>
-    <a class="card" href="https://weight.fherrmann.com">
-      <div class="name">Weight</div>
-      <div class="desc">Weight tracker</div>
-    </a>
     <a class="card" href="https://hymods.de">
       <div class="name">hymods.de</div>
       <div class="desc">HYMODS</div>
@@ -132,6 +138,24 @@
       <div class="name">CV</div>
       <div class="desc">Lebenslauf</div>
     </a>
+    <!--# if expr="$fh_private = 1" -->
+    <a class="card private" href="https://firefly.fherrmann.com">
+      <div class="name">Firefly</div>
+      <div class="desc">Personal finance manager</div>
+    </a>
+    <a class="card private" href="https://weight.fherrmann.com">
+      <div class="name">Weight</div>
+      <div class="desc">Weight tracker</div>
+    </a>
+    <a class="card private" href="https://finanzen.fherrmann.com">
+      <div class="name">Finanzen</div>
+      <div class="desc">Finance Cockpit</div>
+    </a>
+    <a class="card private" href="/grades/">
+      <div class="name">Grades</div>
+      <div class="desc">Notenübersicht</div>
+    </a>
+    <!--# endif -->
   </main>
 
   <footer>&copy; <span id="year"></span> Felix Herrmann · <a class="gh-link" href="https://github.com/Flexii2000" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
