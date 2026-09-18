@@ -168,6 +168,17 @@
       <div class="desc">Liste · Gerichte · Regelmäßig</div>
     </a>
     <!--# endif -->
+    <!-- Quotdle haengt an einem eigenen Cookie (quotdle_access, ueber den
+         Setup-Link), nicht am privaten Modus: Mitspieler bekommen den Link,
+         nicht den Privat-Token. Die Zuordnung Cookie -> $quotdle_access macht
+         /etc/nginx/conf.d/quotdle-access.conf. Ohne Cookie fehlt die Karte
+         im HTML - auch im Inspector steht dann nichts. -->
+    <!--# if expr="$quotdle_access = 1" -->
+    <a class="card private" href="/quotdle/">
+      <div class="name">Quotdle</div>
+      <div class="desc">Merz oder Weidel? Höcke oder Hitler?</div>
+    </a>
+    <!--# endif -->
   </main>
 
   <footer>&copy; <span id="year"></span> Felix Herrmann · <a class="gh-link" href="https://github.com/Flexii2000" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
